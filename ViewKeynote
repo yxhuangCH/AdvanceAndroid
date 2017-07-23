@@ -1,0 +1,31 @@
+1. 画点（批量）
+  	drawPoints(float[] pts, int offset, int count, Paint paint)
+    drawPoints(float[] pts, Paint paint)
+
+
+2. 画圆角矩形
+	drawRoundRect(float left, float, top, float right, float bottom, float rx, float ry, Paint paint);
+	left, top, right, bottom 是四条边的坐标， rx 和 ry 是圆角的横向半径和纵向半径
+
+3. 绘制弧形或扇形
+	drawArc(float left, float top, float right, float bottom, float startAngle, float sweepAangle,
+			boolean useCenter, Paint paint);
+	useCenter 表示是否连接到圆心，如果不连接到圆心，就是弧形；连接到圆心，就是扇形；
+
+4. 画自定义图形
+	drawPath(Path path, Paint paint)
+	path 参数用来描述图形路径的对象
+
+	. addXXX()   添加子图形
+		例如： 
+			addCircle(...) 添加圆
+
+	. xxxTo()	画线（直线或曲线）
+		. lineTo(float x, float y) 画一条直线，参数是绝对坐标
+		. rLineTo(float x, float y) 也是画直线， 参数是相对坐标 （r 是 relatively 相对地）
+
+		. moveTo(x, y) 不添加图形，它设置图形的起点， 辅助方法
+
+	. close() 封闭当前子图形
+	
+
