@@ -27,5 +27,82 @@
 		. moveTo(x, y) 不添加图形，它设置图形的起点， 辅助方法
 
 	. close() 封闭当前子图形
+
+
+二、Paint 详解
+	Paint 的 API 大致分为四类：
+		. 颜色
+		. 效果
+		. drawText() 相关
+		. 初始化
+
+	1. 颜色
+		drawColor/RGB/ARGB() 	直接作为参数传入
+		drawBitmap()			与 Bitmap 参数的像素颜色相同
+
+		. setShader(Shader shaser) 设置 Shader
+			一般是设置其子类： LinearGradient, RadialGradient, SweepGradient, BitmapShaderComposeShader;
+
+		. Shader.TileMode.XXX
+			有三种模式： CLAMP, MIRROR, REPEAT
+
+		. BitmapShader 图片着色器
+
+		. ComposeShader 混合着色器
+
+	2. 效果
+		. setAntiAlias(boolean aa) 设置抗锯齿
+
+		. setStyle(Paint.Style style) 
+			Paint.Style.FILE 填充
+			Paint.Style.STROKE  画线
+			Paint.Style.Paint.Style.FILE 
+
+		. setStrokeWith(float width) 设置线宽
+
+		. setStrokeCap(Paint.Cap cap) 设置线头形状
+			BUTT 平头
+			ROUND 圆头
+			SQUARE 方头
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 

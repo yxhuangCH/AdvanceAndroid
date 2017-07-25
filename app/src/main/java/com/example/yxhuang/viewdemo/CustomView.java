@@ -1,11 +1,16 @@
 package com.example.yxhuang.viewdemo;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.SweepGradient;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -36,12 +41,14 @@ public class CustomView extends View {
 
 //        drawCircle(canvas);
 //        drawPoint(canvas);
-        drawPointMany(canvas);
+//        drawPointMany(canvas);
 //        drawRoundRect(canvas);
 //        drawArc(canvas);
 //    customDraw(canvas);
 //        pathDrawLine(canvas);
 //        pathCloseDraw(canvas);
+
+        customPaint(canvas);
 
 
     }
@@ -140,6 +147,37 @@ public class CustomView extends View {
         canvas.drawPath(path, mPaint);
     }
 
+    // HenCoder Android 开发进阶: 自定义 View 1-2 Paint 详解
+    private void customPaint(Canvas canvas){
+
+//        paintShader(canvas);
+        paintBitmapShader(canvas);
+
+    }
+
+    // 设置 shader
+    private void paintShader(Canvas canvas){
+//        Shader shader = new LinearGradient(100, 100, 500, 500, Color.parseColor("#E91E63"),
+//                                            Color.BLUE, Shader.TileMode.CLAMP);
+//        Shader shader = new RadialGradient(300, 300, 200, Color.parseColor("#E91E63"), Color.BLUE, Shader.TileMode.CLAMP);
+
+        Shader shader = new SweepGradient(300, 300, Color.parseColor("#E91E63"), Color.BLUE);
+
+        mPaint.setShader(shader);
+        mPaint.setStyle(Paint.Style.FILL);
+
+        canvas.drawCircle(300, 300, 300, mPaint);
+
+    }
+
+    private void paintBitmapShader(Canvas canvas){
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
+        Shader shader = new BitmapShader(bitmap, Shader.TileMode.MIRROR, Shader.TileMode.CLAMP);
+        mPaint.setShader(shader);
+
+        canvas.drawCircle(300, 300, 100, mPaint);
+
+    }
 
 
 
