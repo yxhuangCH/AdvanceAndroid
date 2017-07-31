@@ -66,6 +66,56 @@
 			SQUARE 方头
 
 
+三. 文字的绘制
+	1. Canvas 绘制文字的方式
+		drawText(), drawTextRun(),  drawTextOnPath()
+
+		. drawText() 普通绘制, 单行文字，不能huanhang
+		. drawTextOnPath()  沿着一条 Path 来绘制文字
+		. StaticLayout(CharSequence, TextPaint, int width, Layout.Alignment, 
+						float spacingment, float spacingadd, boolean includepad) 绘制多行文字
+			.width 文字区域宽度，文字到达这个宽度后会自定换行；
+			. align 文字的对齐方向；
+			. spacingmult 行间距的倍数，通常是 1
+			. spacingadd 行间距的额外增加值，通常是 0
+			. includeadd 是指是否在文字上下添加额外的空间，避免某些过高的字符的绘制出现越界。
+
+
+	2. Paint 对文字绘制的辅助
+		Paint 对文字绘制的辅助，显示效果和测量文字的。
+
+		. 设置显示效果类
+			. setTextSize(float textSize) 设置文字大小
+
+			. setTypeface(Typeface typeface) 设置字体
+
+			. setFakeBoldText(boolean fakeBoldText)	是否使用伪粗体
+
+			. setStrikeThruText(boolean strikeThruText) 是否加删除线
+
+			. setUnderlineText(boolean underlineText)	是否加下划线
+
+			. setTextSkewX(float skewX) 设置文字倾斜度
+
+			. setTextScaleX(float scaleX) 设置文字横向缩放
+
+			. setLetterSpacing(float letterSpacing) 设置字符间距，默认值是 0
+
+			. setTextAlign(Paint.Align align) 设置文字的对齐方式
+				LEFT, CENTER 和 RIGHT
+
+		
+	3. 测量文字尺寸类
+		. float getFontSpacing() 获取推荐的行距
+
+		. getTextBounds(String text, int start, int end, Rect bounds) 获取文字的显示范围
+
+		. flaot measureText(String text) 测量文字的宽度并返回
+
+		. getTextWidths(String text, float[] widths) 获取字符串中每个字符的宽度，并把结果填入参数 widths 中
+
+
+
 
 
 

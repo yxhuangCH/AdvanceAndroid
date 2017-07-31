@@ -12,6 +12,9 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
 import android.support.annotation.Nullable;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -48,7 +51,9 @@ public class CustomView extends View {
 //        pathDrawLine(canvas);
 //        pathCloseDraw(canvas);
 
-        customPaint(canvas);
+//        customPaint(canvas);
+
+        customDrawText(canvas);
 
 
     }
@@ -180,7 +185,91 @@ public class CustomView extends View {
     }
 
 
+    private void customDrawText(Canvas canvas){
+//        drawText(canvas);
+//        drawTextOnPath(canvas);
+//        staticLayout(canvas);
+//        setFakeBoldText(canvas);
+//        setStrikeThruText(canvas);
+//        setUnderlineText(canvas);
+        setTextSkewX(canvas);
 
+    }
+
+    private void drawText(Canvas canvas){
+        String text = "yxhuang";
+
+        mPaint.setStrokeWidth(20);
+        mPaint.setTextSize(100f);
+
+        canvas.drawText(text, 200, 200, mPaint);
+    }
+
+    // 沿着一条 path 绘制文字
+    private void drawTextOnPath(Canvas canvas) {
+        String text = "yxhuang";
+
+        mPaint.setStrokeWidth(20);
+        mPaint.setTextSize(100f);
+
+        Path path = new Path();
+        path.addArc(200, 200, 400, 400, -225, 225);
+//        path.arcTo(400, 200, 600, 400, -180, 225, false);
+//        path.lineTo(400, 542);
+
+        canvas.drawPath(path, mPaint);
+        canvas.drawTextOnPath(text, path, 0, 0, mPaint);
+
+    }
+
+    private void staticLayout(Canvas canvas){
+        String text1 = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+
+        TextPaint paint = new TextPaint();
+        paint.setTextSize(100f);
+
+        StaticLayout staticLayout1 = new StaticLayout(text1, paint, 600, Layout.Alignment.ALIGN_NORMAL, 1, 0, true);
+        staticLayout1.draw(canvas);
+    }
+
+    // 是否使用伪粗体
+    private void setFakeBoldText(Canvas canvas){
+        TextPaint paint = new TextPaint();
+        paint.setTextSize(100f);
+
+        paint.setFakeBoldText(false);
+        canvas.drawText("yxhuang", 100, 150, paint);
+
+        paint.setFakeBoldText(true);
+        canvas.drawText("yxhuang", 100, 250, paint);
+    }
+
+    // 是否加删除线
+    private void setStrikeThruText(Canvas canvas){
+        TextPaint paint = getTextPaint();
+        paint.setStrikeThruText(true);
+        canvas.drawText("yxhuang", 100, 250, paint);
+    }
+
+    // 是否加下划线
+    private void setUnderlineText(Canvas canvas){
+        TextPaint paint = getTextPaint();
+        paint.setUnderlineText(true);
+        canvas.drawText("yxhuang", 100, 250, paint);
+    }
+
+    // 设置文字倾斜度
+    private void setTextSkewX(Canvas canvas){
+        TextPaint paint = getTextPaint();
+        paint.setTextSkewX(-0.5f);  // 负数向右倾斜，正数向左倾斜
+        canvas.drawText("yxhuang", 100, 250, paint);
+
+    }
+    private TextPaint getTextPaint(){
+        TextPaint paint = new TextPaint();
+        paint.setTextSize(100f);
+        return paint;
+    }
 
 
 
