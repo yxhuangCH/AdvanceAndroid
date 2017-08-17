@@ -25,17 +25,21 @@ import android.view.View;
 public class CustomView extends View {
 
     private Paint mPaint = new Paint();
+    private Context mContext;
 
     public CustomView(Context context) {
         super(context);
+        mContext = context;
     }
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
     }
 
     public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext = context;
     }
 
     @Override
@@ -53,7 +57,9 @@ public class CustomView extends View {
 
 //        customPaint(canvas);
 
-        customDrawText(canvas);
+//        customDrawText(canvas);
+
+        customCanvas(canvas);
 
 
     }
@@ -192,7 +198,7 @@ public class CustomView extends View {
 //        setFakeBoldText(canvas);
 //        setStrikeThruText(canvas);
 //        setUnderlineText(canvas);
-        setTextSkewX(canvas);
+//        setTextSkewX(canvas);
 
     }
 
@@ -269,6 +275,29 @@ public class CustomView extends View {
         TextPaint paint = new TextPaint();
         paint.setTextSize(100f);
         return paint;
+    }
+
+
+    // 自定义 View 1-4 Canvas 对绘制的辅助
+    private void customCanvas(Canvas canvas){
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.weichat);
+        Paint paint = new Paint();
+        paint.setColor(Color.RED); // 画笔颜色
+        paint.setStyle(Paint.Style.STROKE);    // 设置绘制模式，这里是设置镂空
+        paint.setStrokeWidth(10);      // 设置线宽
+        paint.setAntiAlias(true);      // 是否开抗锯齿
+
+        clipRect(canvas, bitmap, paint);
+
+    }
+
+    // 裁剪范围
+    private void clipRect(Canvas canvas, Bitmap bitmap, Paint paint){
+        canvas.save();
+        canvas.clipRect(100, 100, 100, 100);
+        canvas.drawBitmap(bitmap, 0, 0, paint);
+        canvas.restore();
+
     }
 
 
