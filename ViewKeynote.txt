@@ -115,6 +115,11 @@
 		. getTextWidths(String text, float[] widths) 获取字符串中每个字符的宽度，并把结果填入参数 widths 中
 
 
+四. 绘制顺序
+	1. super.onDraw() 前 or 后
+	
+
+
 
 
 
