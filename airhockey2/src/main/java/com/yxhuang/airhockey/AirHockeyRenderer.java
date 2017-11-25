@@ -53,23 +53,32 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         };
 
         float[] tableVerticesWithTriangles = {
-                // Triangle 1
-                -0.5f, -0.5f,
-                0.5f, 0.5f,
-                -0.5f, 0.5f,
+//                // Triangle 1
+//                -0.5f, -0.5f,
+//                0.5f, 0.5f,
+//                -0.5f, 0.5f,
+//
+//                // Triangle 2
+//                -0.5f, -0.5f,
+//                0.5f, -0.5f,
+//                0.5f, 0.5f,
 
-                // Triangle 2
-                -0.5f, -0.5f,
-                0.5f, -0.5f,
-                0.5f, 0.5f,
+                // Triangle Fan
+                0,          0,   1f,   1f,   1f,
+
+                -0.5f,  -0.5f, 0.7f, 0.7f, 0.7f,
+                0.5f,  -0.5f,  0.7f, 0.7f, 0.7f,
+                0.5f,   0.5f,  0.7f, 0.7f, 0.7f,
+                -0.5f,   0.5f, 0.7f, 0.7f, 0.7f,
+                -0.5f,  -0.5f, 0.7f, 0.7f, 0.7f,
 
                 // Line 1
-                -0.5f, 0f,
-                0.5f, 0f,
+                -0.5f, 0f, 1f,  0f, 0f,
+                0.5f, 0f,  1f,  0f, 0f,
 
                 // Mallets
-                0f, -0.25f,
-                0f, 0.25f,
+                0f, -0.25f, 0f, 0f, 1f,
+                0f, 0.25f,  1f, 0f, 0f
         };
 
         mVertexData = ByteBuffer
@@ -102,13 +111,22 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         GLES20.glUseProgram(mProgram);
 
         // 获取位置
-        uColorLocation = GLES20.glGetUniformLocation(mProgram, U_COLOR);
+//        uColorLocation = GLES20.glGetUniformLocation(mProgram, U_COLOR);
+        aColorLocation = GLES20.glGetAttribLocation(mProgram, A_COLOR);
         aPositionLocation = GLES20.glGetAttribLocation(mProgram, A_POSITION);
         // 关联属性与定点数据的数组
         mVertexData.position(0);
+//        GLES20.glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GLES20.GL_FLOAT,
+//                                    false, 0, mVertexData);
         GLES20.glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GLES20.GL_FLOAT,
-                                    false, 0, mVertexData);
+                                    false, STRIDE, mVertexData);
         GLES20.glEnableVertexAttribArray(aPositionLocation);
+
+        // 把顶点数据与着色器中的 a_Color 关联起来
+        mVertexData.position(POSITION_COMPONENT_COUNT);
+        GLES20.glVertexAttribPointer(aColorLocation, COLOR_COMPONENT_COUNT, GLES20.GL_FLOAT,
+                                    false, STRIDE, mVertexData);
+        GLES20.glEnableVertexAttribArray(aColorLocation);
     }
 
     @Override
