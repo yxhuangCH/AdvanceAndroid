@@ -1,1 +1,1 @@
-include ':app', ':opengl'
+include ':app', ':opengl', ':airhockey'
