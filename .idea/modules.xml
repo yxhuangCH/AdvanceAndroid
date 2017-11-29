@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockey/airhockey.iml" filepath="$PROJECT_DIR$/airhockey/airhockey.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockey2/airhockey2.iml" filepath="$PROJECT_DIR$/airhockey2/airhockey2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/airhockeyortho/airhockeyOrtho.iml" filepath="$PROJECT_DIR$/airhockeyortho/airhockeyOrtho.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/opengl/opengl.iml" filepath="$PROJECT_DIR$/opengl/opengl.iml" />
     </modules>
