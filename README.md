@@ -6,7 +6,8 @@
 ### airhockey 是《OpenGL ES 应用开发实践指南（Android 卷）》 中的项目
 
 
-
+### 2017.12.11 更新
+    增加 AirHockey3D 项目 第6章 进入第三维
 ### 2017.11.29 更新
     增加 AirHockeyOrtho 项目 第5章 调整屏幕的宽高比
 ### 2017.11.25 更新
