@@ -3,4 +3,5 @@ include ':app',
         ':airhockey',
         ':airhockey2',
         ':airhockeyortho',
-        ':airhockey3d'
+        ':airhockey3d',
+        ":airhockeytextured"
