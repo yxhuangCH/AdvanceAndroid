@@ -4,4 +4,8 @@ include ':app',
         ':airhockey2',
         ':airhockeyortho',
         ':airhockey3d',
-        ":airhockeytextured"
+        ":airhockeytextured",
+        ":airhockeywithbettermallets"
+
+
+
